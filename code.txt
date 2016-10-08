@@ -1,0 +1,1426 @@
+111
+01-课程概要 
+
+  参看示例 demo/index.html    响应式布局  根据不同屏幕大小 显示不同内容
+
+   README.html
+
+  类似  bootstrap  的 妹子UI
+ 
+
+   3.3.6 最稳定版本
+
+   https://github.com/twbs/bootstrap
+
+   使用 bootstrap 将 bootstrap-3.3.6-dist  目录下的 3个子目录拷贝到工程中即可
+    Bootstrap 的所有JS组件都是依赖JQUERY的
+
+   viewport  参看 viewport 目录下的 01.html  02.html
+
+
+
+01.Bootstrap简介
+
+
+
+Bootstrap （Web框架）
+
+Bootstrap，来自 Twitter，是目前很受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。[1]  它由Twitter的设计师Mark Otto和Jacob Thornton合作开发，是一个CSS/HTML框架。Bootstrap提供了优雅的HTML和CSS规范，它即是由动态CSS语言Less写成。
+
+
+官网  getbootstrap.com
+
+中文网 v3.bootcss.com  点击菜单 起步
+
+        可以点击  下载 bootstrap  下载源码(基于Less)  下载Sass项目
+                   获取框架
+
+
+如果不想下载框架可以使用CDN 加速服务   会寻找最优服务器供用户使用
+
+   在自己工程中加入
+
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+即可
+
+如新建 index.html
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		
+		
+		
+	</body>
+</html>
+
+
+
+
+
+打开  http://www.ip138.com
+
+输入   www.bootcss.com
+
+得知服务器地址为  
+
+
+本站数据：山东省青岛市 阿里云计算有限公司 阿里云
+参考数据1：山东青岛 阿里云/电信/联通/移动/铁通/教育网
+参考数据2：北京市 万网高科技信息技术有限公司
+
+
+
+解压  bootstrap-3.3.6-dist.zip  后发现里面有3个目录
+
+文件名中带 min 都是压缩过的文件
+
+
+
+找到   基本模板
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <h1>你好，世界！</h1>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+
+
+参看 basic_tmpl.html
+
+
+
+视口    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+- 视口的作用：在移动浏览器中，当页面宽度超出设备，浏览器内部虚拟的一个页面容器，将页面容器缩放到设备这么大，然后展示
+- 目前大多数手机浏览器的视口（承载页面的容器）宽度都是980；
+- 视口的宽度可以通过meta标签设置
+- 此属性为移动端页面视口设置，当前值表示在移动端页面的宽度为设备的宽度，并且不缩放（缩放级别为1）
+  + width:视口的宽度
+  + initial-scale：初始化缩放  1不进行缩放 如果允许缩放会导致页面在移动设备上产生滚动条
+  + user-scalable:是否允许用户自行缩放（值：yes/no; 1/0）  不能与下面2个属性同时使用
+  + minimum-scale:最小缩放，一般设置了用户不允许缩放，就没必要设置最小和最大缩放
+  + maximum-scale:最大缩放
+
+
+
+精选示例 
+
+如打开第一个  缩小窗口 会自适应布局
+
+
+      右键查看源代码
+
+
+找到
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+将添加到自己文件中
+
+如新建 index2.html
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo02</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="application/javascript" src="js/jquery-1.11.1.min.js"></script>
+	    <script type="application/javascript" src="js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+	</body>
+</html>
+
+
+
+运行    缩小窗口 会自适应布局
+
+
+
+02.Bootstrap栅格系统原理
+
+  www.bootcss.com    点击 菜单   全局CSS样式
+
+
+找到   栅格系统  
+
+栅格参数
+
+Bootstrap 将屏幕分辨率分成了4种  
+
+超小屏幕 手机 (<768px)	小屏幕 平板 (≥768px)	中等屏幕 桌面显示器 (≥992px)	大屏幕 大桌面显示器 (≥1200px)
+
+.container 最大宽度	None （自动）	750px	970px	1170px
+
+类前缀	.col-xs-	.col-sm-	.col-md-	.col-lg-
+
+
+列（column）数	12
+
+                    将整个屏幕宽度拆分成12列  每一列的大小与屏幕分辨率相关 每一格float 水平排列
+
+如 div  设置 class 为  .col-md-8   那么占用8个格的屏幕宽度  无需在指定分辨率大小或百分比
+
+新建文件  demo01.html
+
+
+<!DOCTYPE html>
+<html>
+		<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style type="text/css">
+			div{ border: 1px #333333 solid;}
+
+
+		</style>
+	</head>
+	<body>
+<!--  container样式是Bootstrap定义好的 会根据屏幕分辨率大小自动分配宽度-->
+		<div class="container">
+		 <!-- row必须嵌套在 container 中 -->
+			<div class="row">
+			<!-- 中等屏幕 col-md  会将container设置为970px -->
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+				<div class="col-md-1">col-md-1</div>
+			</div>
+			<div class="row">
+			<!-- md中等屏幕 8比4等分   sm小屏幕 6比6等分  -->
+				<div class="col-md-8 col-sm-6">md8</div>
+				<div class="col-md-4 col-sm-6">md4</div>
+			</div>
+		</div>
+
+	</body>
+</html>
+
+运行
+
+
+回到    www.bootcss.com   找到  栅格参数  上面  媒体查询
+
+
+在栅格系统中，我们在 Less 文件中使用以下媒体查询（media query）来创建关键的分界点阈值。
+
+
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: @screen-sm-min) { ... }
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: @screen-md-min) { ... }
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: @screen-lg-min) { ... }
+
+
+偶尔也会在媒体查询代码中包含 max-width 从而将 CSS 的影响限制在更小范围的屏幕大小之内。
+
+复制
+@media (max-width: @screen-xs-max) { ... }
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg-min) { ... }
+
+
+
+
+打开  demo01.html
+
+
+在  	div{ border: 1px #333333 solid;}
+
+下面加入
+
+/*媒体查询 屏幕宽度小于767时显示该样式*/
+@media(max-width:767px)
+			{
+    div{ background: #F0AD4E;}
+}
+
+运行
+
+
+
+03.Bootstrap栅格系统用法
+
+容器布局
+
+
+新建文件  demo02.html
+
+
+<!DOCTYPE html>
+<html>
+		<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo02</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style type="text/css">
+
+			div{ background: #C9302C;}
+		</style>
+	</head>
+	<body>
+	<!-- 参看 栅格参数  Container 说明-->
+	<!-- 当超小屏幕(<768px)时 container  会设置为 None （自动） 占满屏幕 -->
+	<!-- 当是小屏幕(>=768px) 到 中等屏幕(<=992px) 会设置为 750px  居中显示-->
+	<!-- 当是中等屏幕(≥992px) 到 大屏幕(<=1200px) 会设置为 970px  居中显示-->
+	<!-- 当是大屏幕 (≥1200px)  会设置为 1170px  居中显示-->
+		<div class="container">
+			<h1>Container</h1>
+
+		</div>
+
+		<!-- container-fluid 无论何种分辨率都是满屏显示 -->
+		<div class="container-fluid">
+
+			<h1>container-fluid</h1>
+		</div>
+	</body>
+</html>
+
+
+
+
+运行
+
+
+查看  bootstrap.css 源代码  1579行
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+
+列组合  .col-md-*    大分辨率下会自动兼容小分辨率设置
+
+新建文件  demo03.html
+
+<!DOCTYPE html>
+<html>
+		<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo03</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="application/javascript" src="js/jquery-1.11.1.min.js"></script>
+	    <script type="application/javascript" src="js/bootstrap.min.js"></script>
+	    <style type="text/css">
+	    	div{ border: 1px #0F0F0F solid;}
+	    </style>
+		</head>
+	<body>
+		<div class="container">
+		   <div class="row">
+		   <!-- 占用12等份的4份 .col-md-中等屏幕 -->
+		   	    <div class="col-md-4">col-md-4</div>
+		   		<div class="col-md-4">col-md-4</div>
+		   		<div class="col-md-4">col-md-4</div>
+		   </div>
+		   <div class="row">
+		   <!-- .col-xs- 超小屏幕占用12等份的6份 但在大分辨率下会自动兼容小分辨率设置 -->
+		   	  <div class="col-xs-6">col-xs-6</div>
+		   	  <div class="col-xs-6">col-xs-6</div>
+		   </div>
+		
+		</div>
+	</body>
+</html>
+
+运行
+
+列偏移   col-md-offset-*
+
+在 
+
+                  <div class="row">
+		   <!-- .col-xs- 超小屏幕占用12等份的6份 但在大分辨率下会自动兼容小分辨率设置 -->
+		   	  <div class="col-xs-6">col-xs-6</div>
+		   	  <div class="col-xs-6">col-xs-6</div>
+		   </div>
+
+下面加入
+
+                  <div class="row">
+			 <!-- 在当前列左边空出来12等分的3格 -->
+		   	  <div class="col-md-3 col-md-offset-3">col-xs-3</div>
+		   	  <!-- 左边空出来12等分的2格 -->
+		   	  <div class="col-md-2 col-md-offset-2">col-xs-2</div>
+		   </div>
+
+
+运行
+
+
+列嵌套
+
+在加入
+
+                 <div class="row">
+		     <!-- 总共2列第一列占用8个格子 相当于12等分中的8等分在12等分 -->
+		   	  <div class="col-md-8">
+                 <div class="row">
+                 	<div class="col-md-6">6</div>
+                 	<div class="col-md-6">6</div>
+                 </div>
+		   	   </div>
+		   	  <div class="col-md-4">4</div>
+		   </div>
+
+
+运行
+
+
+
+列排序  col-md-push-*   col-md-pull-*
+
+
+在加入
+
+                 <div class="row">
+		    <!-- 向右推5格 -->
+		   	  <div class="col-md-3 col-md-push-5">col-xs-3</div>
+		      <!-- 向左拉2格 -->
+		   	  <div class="col-md-2 col-md-pull-2">col-xs-2</div>
+		   </div>
+
+运行
+
+
+跨设备定义组合
+
+在加入
+
+	           <hr />
+		   <div class="row">
+                         <!-- 设置不同分辨率下的显示模式 -->
+		   	  <div class="col-md-8 col-xs-6 col-sm-3">8</div>
+		   	  <div class="col-md-4 col-xs-6 col-sm-6">4</div>
+		   </div>
+
+
+运行
+
+
+清除浮动  clearfix visible-xs
+
+
+新建文件  demo04.html
+
+
+<!DOCTYPE html>
+<html>
+		<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo04</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="application/javascript" src="js/jquery-1.11.1.min.js"></script>
+	    <script type="application/javascript" src="js/bootstrap.min.js"></script>
+	    <style type="text/css">
+	    	div{ border: 1px #101010 solid;}
+	    	/*#container{ width: 800px; margin: 10px auto;}*/
+	    </style>
+		</head>
+	<body>
+		<div id="container">
+			<div class="row">
+			<!--  在xs分辨率下显示2行  sm分辨率下显示1行-->
+				<div class="col-xs-6 col-sm-3">col-xs-6 col-sm-3  1<br/>
+					sdlfsdfldsfjdsl
+				</div>
+				<div class="col-xs-6 col-sm-3">col-xs-6 col-sm-3  2</div>
+				<!-- 清除浮动 隔墙法   visible-xs 只在超小分辨率下才显示div-->
+				<div class="clearfix visible-xs"></div>
+				<div class="col-xs-6 col-sm-3">col-xs-6 col-sm-3  3</div>
+				<div class="col-xs-6 col-sm-3">col-xs-6 col-sm-3  4</div>
+			</div>
+
+		</div>
+	</body>
+</html>
+
+
+运行
+
+
+禁止响应式布局
+
+1 .删除   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+2 . 不使用 container 样式
+
+
+作业   回到  www.bootcss.com   点击 顶部 全局CSS样式 在点击 右侧 栅格系统 从间接 一直到 排版 前的内容看一遍
+
+
+
+
+04.Bootstrap排版基础01
+05.Bootstrap排版基础02
+
+响应式图片   img-responsive 样式 
+
+           其实就是为图片设置了 max-width:100% height:auto;
+
+新建文件   demo.html
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>demo01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container>
+      <div class="row">
+      <!-- 大分辨率会 保持小分辨率设置比例 -->
+        <div class="col-sm-4">
+          <img src="img/pic01.jpg"  class="img-responsive"/>
+        </div>
+        <div class="col-sm-8"></div>
+        </div>
+  </body>
+</html>
+
+运行
+
+
+排版与连接
+
+修改
+
+ <div class="col-sm-8"></div>
+
+如下
+
+
+          <div class="col-sm-8">
+          <!-- 默认标签选择器有margin-top bottom设置
+          在h标签中可以使用<small>，<small> 对于h1-h3占其像素大小的65%
+                       对于h4-h6占其像素大小的75%-->
+          <h1>第一个标题样式<small>小字体</small></h1>
+          <h2>第一个标题样式<small>小字体</small></h2>
+          <h3>第一个标题样式<small>小字体</small></h3>
+          <h4>第一个标题样式<small>小字体</small></h4>
+          <h5>第一个标题样式<small>小字体</small></h5>
+          <h6>第一个标题样式<small>小字体</small></h6>
+          <p class="h1">第一个标题样式<small>小字体</small></p>
+          <p class="h2">第一个标题样式<small>小字体</small></p>
+          <p class="h3">第一个标题样式<small>小字体</small></p>
+          <p class="h4">第一个标题样式<small>小字体</small></p>
+          <p class="h5">第一个标题样式<small>小字体</small></p>
+          <p class="h6">第一个标题样式<small>小字体</small></p>
+          </div>
+
+
+运行
+
+
+body全局样式
+
+
+查看  bootstrap.css 源代码  1088行
+
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+
+打开 demo.html
+
+加入
+
+<!-- 如果p的文本需要有强调效果 设置lead 样式 以及对其方式  -->
+ <p class=" lead  text-center">
+            ootstrap是Twitter推出的一个用于前端开发的开源工具包。它由Twitter的设计师Mark Otto和Jacob Thornton合作开发,是一个CSS/HTML框架。目前,Bootstrap最新版本为3.
+ </p>
+
+
+运行
+
+
+强调文本
+
+
+在 
+
+ ootstrap是Twitter推出的一个用于前端开发的开源工具包。它由Twitter的设计师Mark Otto和Jacob Thornton合作开发,是一个CSS/HTML框架。目前,Bootstrap最新版本为3.
+
+下面加入
+
+            <small>small</small>
+            <em>em</em>
+            <cite>cite url</cite>
+            <b>b</b>
+            <hr/>
+            <!-- abbr简语当鼠标移动到  学习bootstrap 文本上时显示  跟我一起学习Bootstrap-->
+            <abbr title="跟我一起学习Bootstrap">学习bootstrap</abbr>
+            <!--  initialism 字母变大写 大小为原大小90%-->
+            <abbr title="跟我一起学习Bootstrap" class="initialism">学习bootstrap</abbr>
+            <br/>
+
+
+
+运行
+
+
+查看  bootstrap.css 源代码  1468行
+
+.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+
+
+在加入
+
+
+<address>
+  <strong>Twitter, Inc.</strong><br>
+  795 Folsom Ave, Suite 600<br>
+  San Francisco, CA 94107<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:#">first.last@example.com</a>
+</address>
+
+
+运行
+
+
+
+查看  bootstrap.css 源代码  1520行
+
+
+address {
+  margin-bottom: 20px;
+  font-style: normal;
+  line-height: 1.42857143;
+}
+
+
+
+在加入
+
+
+   <!-- 不添加 pull-right  样式 靠左对齐-->
+   <blockquote class="pull-right">
+              <p>
+                Bootstrap是Twitter推出的一个用于前端开发的开源工具包。它由Twitter的设计师Mark Otto和Jacob Thornton合作开发,是一个CSS/HTML框架。目前,Bootstrap最新版本为3.0...
+              </p>
+              <small>来自<em>bootstrap中文网</em></small>
+            </blockquote>
+
+
+
+作业   回到  www.bootcss.com   点击 顶部 全局CSS样式 在点击 右侧 排版 从排版 一直到 列表 的内容看一遍
+
+
+
+06.bootstrap列表与代码样式
+
+
+新建 demo.html
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<ul>
+				<li>中国</li>
+				<li>美国</li>
+				<li>英国</li>
+			</ul>
+			<hr/>
+			<ol>
+				<li>中国</li>
+				<li>美国</li>
+				<li>英国</li>
+			</ol>
+			<hr />
+			<!-- 去点列表 -->
+			<ol class="list-unstyled">
+				<li>中国</li>
+				<li>美国</li>
+				<li>英国</li>
+			</ol>
+			<hr/>
+			<!-- 内联列表   水平排列 可以制作菜单-->
+			<ul class="list-inline">
+				<li><a href="#">中国</a></li>
+				<li><a href="#">美国</a></li>
+				<li><a href="#">英国</a></li>
+			</ul>
+			<hr/>
+			<!-- 不设置 dl-horizontal dd默认缩进的功能被取消掉了
+			      dl-horizontal 设置dt dd  在同一水平线显示-->
+			<dl class="dl-horizontal">
+				<dt>java1</dt>
+				<dd>java1是一门面向对象的编程语言，我用了差不多十年，非常喜欢它</dd>
+				<dt>java2</dt>
+				<dd>java2是一门面向对象的编程语言，我用了差不多十年，非常喜欢它</dd>
+				<dt>java3</dt>
+				<dd>java3是一门面向对象的编程语言，我用了差不多十年，非常喜欢它</dd>
+
+			</dl>
+
+		</div>
+	</body>
+</html>
+
+
+
+查看  bootstrap.css 源代码  1410行
+
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+
+
+新建 demo2.html
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo02</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+		     <!--  -->
+			java 的入口函数为main<code>publit static void main(String args[])</code>,必须是这样的结构
+			<hr/>
+			java 让用户输入一个数字<code>Scanner sc=new Scanner(System.in);</code>,让用户输入的是
+			<kbd>alt+f</kbd>,这样用户输入,
+			<hr/>
+		   按<kbd>ctrl+D</kbd>就出现了画笔
+			<hr/>
+			<pre>
+				  public class Hello
+				  {
+				  	  public static void main(String args[])
+				  	  {
+				  	  	int i=10;
+				  	  	System.out.println("Hello Java!");
+				  	  }
+				  }
+				  <samp>Hello Java!</samp>
+			</pre>
+			其中<var>i</var>是一个变量
+			程序结果为：
+			<samp>Hello Java!</samp>
+		</div>
+	</body>
+</html>
+
+运行
+
+
+
+07.Bootstrap表格样式
+
+
+新建 demo1.html
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>带条纹</h1>
+			<!-- table 基础样式根据分辨率大小自适应 table-striped带条纹样式  -->
+			<table class="table table-striped">
+				<tr><th>序号</th><th>姓名</th><th>年龄</th></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+			</table>
+
+			<h1>带边框</h1>
+			<table class="table table-bordered table-striped">
+				<tr><th>序号</th><th>姓名</th><th>年龄</th></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+			</table>
+			<h1>悬停</h1>
+				<table width="600" class="table table-bordered table-striped table-hover">
+				<tr><th>序号</th><th>姓名</th><th>年龄</th></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+			</table>
+
+				<h1>坚凑</h1>
+				<table class="table table-bordered  table-condensed">
+				<!-- 行内样式 -->
+				<tr class="info"><th>序号</th><th>姓名</th><th>年龄</th></tr>
+				<tr class="success"><td>1</td><td>张三</td><td>22</td></tr>
+				<tr class="warning"><td>1</td><td>张三</td><td>22</td></tr>
+				<tr  class="danger"><td>1</td><td>张三</td><td>22</td></tr>
+				<tr class="active"><td>1</td><td>张三</td><td>22</td></tr>
+				<tr><td>1</td><td>张三</td><td>22</td></tr>
+			</table>
+
+			<hr/>
+			<hr />
+			<div class="row">
+				<div class="col-sm-4">
+				<!--不设置 table-responsive 样式 放到  container 中也会是响应式表格 -->
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped table-hover">
+					<tr><th>序号</th><th>姓名</th><th>年龄</th></tr>
+					<tr><td>1</td><td>张三</td><td>22</td></tr>
+					<tr><td>1</td><td>张三</td><td>22</td></tr>
+					<tr><td>1</td><td>张三</td><td>22</td></tr>
+					<tr><td>1</td><td>张三</td><td>22</td></tr>
+					<tr><td>1</td><td>张三</td><td>22</td></tr>
+				</table>
+			</div>
+			</div>
+
+			</div>
+		</div>
+	</body>
+</html>
+
+
+运行
+
+
+08.Bootstrap表单样式1
+
+
+新建 demo1.html
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+					<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<form action="#" method="post">
+				<fieldset>
+					<legend>用户登陆</legend>
+					<!-- form-group  设置与下一个组件组件之间的间距是15px -->
+					<div class="form-group">
+						<label>用户名:</label>
+						<!--  form-control 将宽度设置成100%-->
+						<input type="text" class="form-control" name="name" placeholder="输入用户名" />
+					</div>
+
+					<div class=" form-group">
+						<label>密码：</label>
+						<input type="password" class="form-control" name="pwd" />
+					</div>
+					<div class="checkbox">
+					<!--<input type="checkbox" /> 要求嵌套在 label中  -->
+						<label>记住密码</label>
+					</div>
+					<!-- btn-default 按钮默认样式 -->
+				<button type="submit" class="btn btn-default">登陆</button>
+
+				</fieldset>
+
+			</form>
+
+
+		</div>
+	</body>
+</html>
+
+
+运行
+
+
+
+查看  bootstrap.css 源代码  2623行
+
+
+
+新建 demo2.html
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+					<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+		<!-- form-inline 水平排列 -->
+			<form action="#" method="post" class="form-inline">
+				<fieldset>
+					<legend>用户登陆</legend>
+
+					<div class="form-group">
+					<!-- sr-only 隐藏label -->
+						<label class="sr-only">用户名:</label>
+						<input type="text" class="form-control" name="name" placeholder="输入用户名" />
+					</div>
+
+					<div class=" form-group">
+						<label class="sr-only">密码：</label>
+						<input type="password" class="form-control" name="pwd" />
+					</div>
+					<div class="checkbox">
+						<label><input type="checkbox" />记住密码</label>
+					</div>
+				<button type="submit" class="btn btn-default">登陆</button>
+
+				</fieldset>
+
+			</form>
+
+
+		</div>
+	</body>
+</html>
+
+
+运行
+
+
+新建 demo3.html
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+		<!-- html 里面的 role 本质上是增强语义性，当现有的HTML标签不能充分表达语义性的时候，就可以借助role来说明。通常这种情况出现在一些自定义的组件上，这样可增强组件的可访问性、可用性和可交互性。
+role的作用是描述一个非标准的tag的实际作用。比如用div做button，那么设置div 的 role=“button”，辅助工具就可以认出这实际上是个button
+比如，
+<div role="checkbox" aria-checked="checked"></div>
+辅助工具就会知道，这个div实际上是个checkbox的角色，为选中状态。 -->
+
+			<!-- 通过为表单添加 .form-horizontal 类，并联合使用 Bootstrap 预置的栅格类，可以将 label 标签和控件组水平并排布局。 -->
+			<form class="form-horizontal" role="from">
+
+				<div class="form-group">
+				<!--  control-label 文本右对齐-->
+					<label class=" col-sm-2 control-label">用户名:</label>
+					<div class="col-sm-8">
+					<!--form-control占满容器  -->
+					  <input type="text" class="form-control"/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2">密码:</label>
+					<div class="col-sm-8">
+
+					<input type="password"  class="form-control"/>
+					</div>
+
+				</div>
+
+			</form>
+
+
+
+		</div>
+	</body>
+</html>
+
+
+
+
+09.Bootstrap表单样式2
+
+被支持的控件
+
+表单布局实例中展示了其所支持的标准表单控件。
+
+输入框
+包括大部分表单控件、文本输入域控件，还支持所有 HTML5 类型的输入控件： text、password、datetime、datetime-local、date、month、time、week、number、email、url、search、tel 和 color。
+
+必须添加类型声明
+只有正确设置了 type 属性的输入控件才能被赋予正确的样式。
+
+
+
+
+新建 demo4.html
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+
+			<form>
+			<!-- disabled 禁用 -->
+				<fieldset >
+				<!-- class="radio" 设置了   按钮与文本间距-->
+			   <div class="radio">
+			   	<label><input type="radio" name="sex" value="M" />男</label>
+
+			   </div>
+			   <div class="checkbox">
+			   	 <label><input type="checkbox" />中国</label>
+			   </div>
+				 <div class="checkbox">
+			   	 <label><input type="checkbox" checked/>中国</label>
+
+			   </div>
+				 <div class="checkbox">
+			   	 <label><input type="checkbox" />中国</label>
+
+			   </div>
+
+			   <div class="checkbox">
+			   <!-- checkbox-inline 水平排列 -->
+<label class="checkbox-inline">  <input type="checkbox" > 1</label>
+<label class="checkbox-inline">  <input type="checkbox"> 2</label>
+<label class="checkbox-inline">  <input type="checkbox" > 3</label>
+
+			   </div>
+			   <!-- 校验状态   has-success-->
+				<div class=" form-group has-success">
+					<label class="control-label">用户名 ：</label>
+					<!--autofocus自动获得焦点   form-control撑满容器-->
+					<input type="tel" placeholder="输入电话号" class="form-control" autofocus/>
+				</div>
+
+				<div class="form-group has-success">
+  <label class="control-label" for="inputSuccess1">Input with success</label>
+  <input type="text" class="form-control" id="inputSuccess1">
+</div>
+<div class="form-group has-warning">
+  <label class="control-label" for="inputWarning1">Input with warning</label>
+  <input type="text" class="form-control" id="inputWarning1">
+</div>
+				</fieldset>
+			</form>
+
+
+
+		</div>
+	</body>
+</html>
+
+
+
+
+
+10.Bootstrap表单样式3
+
+
+添加额外的图标
+
+
+第一步在 div 上添加 has-feedback 样式
+
+第二步  在  <input> 后面加入 <span class="glyphicon glyphicon-eye-open form-control-feedback">
+
+图标样式  打开   v3.bootcss.com 点击  菜单 顶部   组件 
+
+   找到  Glyphicons 字体图标
+
+  将任意图标下面的名字复制即可
+
+
+
+类似role和aria-hidden的东西完全不要理会  这个是用于屏幕阅读器的，帮助残障人士更好的访问网站。
+
+
+
+新建 demo5.html
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+					<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<form action="#" method="post">
+<!-- has-feedback  设置添加图标 -->
+					<div class="form-group has-feedback">
+						<label>用户名:</label>
+						<input type="text" class="form-control" name="name" placeholder="输入用户名" />
+						<span class="glyphicon glyphicon-eye-open form-control-feedback" aria-hidden="true"></span>
+					</div>
+					<div>
+<!-- 控件尺寸  input-lg 大的  input-sm 小的  Default input默认大小-->
+						<input class="form-control input-lg" type="text" placeholder=".input-lg">
+<input class="form-control" type="text" placeholder="Default input">
+<input class="form-control input-sm" type="text" placeholder=".input-sm">
+
+<select class="form-control input-lg">...</select>
+<select class="form-control">...</select>
+<select class="form-control input-sm">...</select>
+					</div>
+					<!-- help-block 独占一行用来文本提示 -->
+					<span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+					<div class="form-group">
+						 <div class="row">
+						 	<div class="col-sm-3">
+								<!-- form-control 撑满容器 -->
+						 		<input type="tel" class="form-control" />
+						 	</div>
+						 		<div class="col-sm-6">
+
+						 		<input type="tel" class="form-control" />
+						 	</div>
+						 </div>
+
+					</div>
+
+			</form>
+
+
+		</div>
+	</body>
+</html>
+
+运行
+
+
+11.Bootstrap按钮
+
+新建 demo.html
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+							<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+    <!-- btn 通用样式 + 具体样式  按钮的大小是取决于文字的大小+padding来定义-->
+			<button type="button" class="btn btn-info">大家好</button>
+
+			<!-- Standard button   使用 .btn-lg、.btn-sm 或 .btn-xs 就可以获得不同尺寸的按钮-->
+<button type="button" class="btn btn-default btn-lg">（默认样式）Default</button>
+
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<button type="button" class="btn btn-primary btn-sm">（首选项）Primary</button>
+
+<!-- Indicates a successful or positive action -->
+<button type="button" class="btn btn-success btn-xs">（成功）Success</button>
+
+<!-- Contextual button for informational alert messages -->
+<button type="button" class="btn btn-info">（一般信息）Info</button>
+
+<!-- Indicates caution should be taken with this action -->
+<button type="button" class="btn btn-warning">（警告）Warning</button>
+<hr />
+<!-- Indicates a dangerous or potentially negative action   btn-block占满整个容器 -->
+<button type="button" class="btn btn-danger btn-block">（危险）Danger</button>
+<hr />
+<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+<button type="button" class="btn btn-link">（链接）Link</button>
+			<hr />
+      <!--  多标签按钮 -->
+			<a href="http://www.baidu.com" class="btn btn-danger btn-lg disabled" role="button">大家好</a>
+      <!-- active 活动状态相当于按钮按下  disabled禁用状态 透明度变为65% -->
+<div class="btn btn-danger btn-lg" role="button" active>大家好啊</div>
+<hr />
+<!-- 在ie9以下 a做的按钮即使disabled  也可以点击使用-->
+		<a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
+    <hr />
+<a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+		</div>
+	</body>
+</html>
+
+运行
+
+12.Bootstrap图片与辅助样式
+
+
+新建 demo.html
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+								<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+		<!--  img-responsive 响应式图片  宽度100%  高度auto-->
+			<img src="img/pic01.jpg" class="img-responsive" />
+			<hr />
+			<!-- 圆角  圆形  带线边框 -->
+			<img src="img/pic01.jpg" width="150" height="150" class="img-rounded" />
+			<img src="img/pic01.jpg"  width="150" height="150"  class="img-circle" />
+			<img src="img/pic01.jpg"  width="150" height="150"  class="img-thumbnail" />
+			<hr />
+			<!-- 文本颜色6种 -->
+			<p class="text-danger">大家好</p>
+			<p class="text-info">大家好</p>
+			<p class="text-primary">大家好</p>
+			<hr />
+			<!-- bg-info 背景色5种-->
+			<p class="bg-info text-danger">大家好</p>
+			<hr/>
+			<!-- close 辅助图标是关闭按钮 -->
+			<button type="button" class="close">&times;</button>
+			<!-- 可以使用a来实现按钮 -->
+			<a href="#" class="close">&times;</a>
+			<hr />
+			<!-- class="caret" 向下箭头 -->
+			<span class="caret"></span>
+	</body>
+</html>
+
+
+运行
+
+
+快速浮动
+
+
+新建 demo2.html
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+							<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo01</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style type="text/css">
+
+			div{ border: 1px #000000 solid;}
+		</style>
+	</head>
+	<body>
+           <!-- center-block  为任意元素设置 display: block 属性并通过 margin 属性让其中的内容居中 占满全屏-->
+		<div class="center-block">
+			居中
+		</div>
+		<div>
+
+
+			<div class="pull-left" style="width:200px;">居左</div>
+			<div class="pull-right" style="width: 200px;">居右</div>
+			<!-- .clearfix 清除浮动  在 sm 分辨率显示 -->
+			<div class="clearfix visible-sm"></div>
+			<!-- 在 sm 分辨率显示-->
+			<div class=" visible-sm">ccc</div>
+		</div>
+	</body>
+</html>
+
+运行
+
+
+说明:
+
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+
+
+
